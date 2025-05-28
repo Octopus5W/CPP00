@@ -6,14 +6,14 @@
 #    By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/11 16:20:50 by hdelbecq          #+#    #+#              #
-#    Updated: 2025/05/28 21:31:02 by hdelbecq         ###   ########.fr        #
+#    Updated: 2025/05/28 21:29:10 by hdelbecq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = account
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-SRC =	megaphone.cpp
+SRC =	account.cpp test.cpp 
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
@@ -26,6 +26,7 @@ clean:
 fclean: clean
 	rm -f $(OBJ)
 	rm -f $(NAME)
+	
 
 re: fclean all
 

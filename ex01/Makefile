@@ -6,14 +6,14 @@
 #    By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/11 16:20:50 by hdelbecq          #+#    #+#              #
-#    Updated: 2025/05/25 03:52:35 by hdelbecq         ###   ########.fr        #
+#    Updated: 2025/05/28 21:30:26 by hdelbecq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = phonebook
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-SRC =	main.cpp PhoneBook.cpp Contact.cpp
+SRC = main.cpp Contact.cpp PhoneBook.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
@@ -24,7 +24,9 @@ clean:
 	rm -f $(OBJ)
 
 fclean: clean
+	rm -f $(OBJ)
 	rm -f $(NAME)
+	
 
 re: fclean all
 

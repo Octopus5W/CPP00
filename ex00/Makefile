@@ -6,12 +6,12 @@
 #    By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/11 16:20:50 by hdelbecq          #+#    #+#              #
-#    Updated: 2025/05/28 21:31:02 by hdelbecq         ###   ########.fr        #
+#    Updated: 2025/05/31 19:37:04 by hdelbecq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = megaphone
-CC = c++
+CPP = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 SRC =	megaphone.cpp
 OBJ = $(SRC:.cpp=.o)

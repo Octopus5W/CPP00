@@ -6,14 +6,14 @@
 #    By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/11 16:20:50 by hdelbecq          #+#    #+#              #
-#    Updated: 2025/05/28 21:29:10 by hdelbecq         ###   ########.fr        #
+#    Updated: 2025/06/01 02:31:41 by hdelbecq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = account
-CC = c++
+C++ = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-SRC =	account.cpp test.cpp 
+SRC =	Account.cpp tests.cpp 
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)

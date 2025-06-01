@@ -6,20 +6,25 @@
 /*   By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:56:13 by hdelbecq          #+#    #+#             */
-/*   Updated: 2025/05/31 19:35:34 by hdelbecq         ###   ########.fr       */
+/*   Updated: 2025/06/01 02:49:35 by hdelbecq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook () {}
+PhoneBook::PhoneBook () : _contact_iteration(0) {}
 
 PhoneBook::~PhoneBook() {}
 
-PhoneBook::PhoneBook(PhoneBook const &copy) {}
+PhoneBook::PhoneBook(PhoneBook const &copy) : _contact_iteration(copy._contact_iteration), _contact(copy._contact) {}
+	
 
 PhoneBook &PhoneBook::operator=(const PhoneBook &other)
 {
+	if (this != &other)
+	{
+		this->_contact_iteration = other._contact_iteration;
+	}
 	return *this;
 }
 
@@ -143,25 +148,25 @@ Contact& PhoneBook::get_contact(int index)
 
 void PhoneBook::SEARCH()
 {
-	std::string input;
 	if (this->check_i_contact() == 0)
-		return ;
+	return ;
 	std::cout << " ===========================================" << std::endl;
 	std::cout << "|INDEX     |FIRSTNAME |LASTNAME  |NICKNAME  |" << std::endl;
 	std::cout << " ===========================================" << std::endl;
 	for (int i = 0; i < 8; i++)
 	{
 		if (this->get_contact(i).get_FirstName().empty())
-			break;
+		break;
 		std::cout << "|         " << i + 1 << "|" 
-			<< this->format(this->get_contact(i).get_FirstName())<< "|"
-		        << this->format(this->get_contact(i).get_LastName())<< "|"
-		        << this->format(this->get_contact(i).get_NickName())<< "|" << std::endl;
+		<< this->format(this->get_contact(i).get_FirstName())<< "|"
+		<< this->format(this->get_contact(i).get_LastName())<< "|"
+		<< this->format(this->get_contact(i).get_NickName())<< "|" << std::endl;
 	}
 	std::cout << " ===========================================" << std::endl;
-	  
-	std::cout << "Choose an index." << std::endl;
+	
 	int i;
+	std::string input;
+	std::cout << "Choose an index." << std::endl;
 	while (input.empty())
 	{
 		std::cin >> input;
@@ -184,6 +189,8 @@ void PhoneBook::SEARCH()
 		{
 			std::cout << "Your input is wrong!\nChoose an INDEX or Put EXIT." << std::endl;
 			input.clear();
+			std::cin.clear();
+			std::cin.ignore();
 		}
 	};
 }

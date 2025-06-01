@@ -6,7 +6,7 @@
 /*   By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:22:24 by hdelbecq          #+#    #+#             */
-/*   Updated: 2025/05/31 18:56:25 by hdelbecq         ###   ########.fr       */
+/*   Updated: 2025/06/01 02:32:37 by hdelbecq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class PhoneBook{
 
 	private:
 		Contact _contact[8];
-		int _contact_iteration = 0;
+		int _contact_iteration;
 		
 	public:
 		PhoneBook();

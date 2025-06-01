@@ -6,7 +6,7 @@
 #    By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/11 16:20:50 by hdelbecq          #+#    #+#              #
-#    Updated: 2025/06/01 02:31:36 by hdelbecq         ###   ########.fr        #
+#    Updated: 2025/06/01 16:46:58 by hdelbecq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJ = $(SRC:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(C++) $(CFLAGS) $(OBJ) -o $(NAME)
 clean:
 	rm -f $(OBJ)
 

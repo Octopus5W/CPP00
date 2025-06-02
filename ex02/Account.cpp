@@ -6,13 +6,12 @@
 /*   By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 15:29:45 by hdelbecq          #+#    #+#             */
-/*   Updated: 2025/06/01 02:28:43 by hdelbecq         ###   ########.fr       */
+/*   Updated: 2025/06/02 16:33:54 by hdelbecq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
-#include <ctime>
 #include <iomanip>
 
 int Account::_nbAccounts = 0;

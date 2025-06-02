@@ -6,7 +6,7 @@
 /*   By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:56:13 by hdelbecq          #+#    #+#             */
-/*   Updated: 2025/06/01 02:49:35 by hdelbecq         ###   ########.fr       */
+/*   Updated: 2025/06/02 16:32:05 by hdelbecq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,9 +170,9 @@ void PhoneBook::SEARCH()
 	while (input.empty())
 	{
 		std::cin >> input;
-		if (input.length() == 1 && input.find_first_not_of("12345678") == input.npos && (i = this->get_contact(stoi(input) - 1).get_FirstName().length()) > 0)
+		i = stoi(input) - 1;
+		if (input.length() == 1 && input.find_first_not_of("12345678") == input.npos && this->get_contact(i).get_FirstName().length() > 0)
 		{
-			--i;
 			std::cout << "Firstname:    " << this->get_contact(i).get_FirstName() << std::endl;	  
 			std::cout << "Lastname:     " << this->get_contact(i).get_LastName() << std::endl;	  
 			std::cout << "Nickname:     " << this->get_contact(i).get_NickName() << std::endl;	  

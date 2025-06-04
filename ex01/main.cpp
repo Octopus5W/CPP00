@@ -6,7 +6,7 @@
 /*   By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 21:18:32 by hdelbecq          #+#    #+#             */
-/*   Updated: 2025/05/31 20:13:09 by hdelbecq         ###   ########.fr       */
+/*   Updated: 2025/06/04 18:19:22 by hdelbecq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,15 @@ int main (void)
 	while (1)
 	{
 		std::cout<< "Type ADD, SEARCH or EXIT" << std::endl;
-		std::cin >> input;
-		if (input == "EXIT")
+		std::getline(std::cin, input);
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin.ignore();
+			std::cout << "Exit failure : cin error" << std::endl;
+			exit (1);
+		}
+		else if (input == "EXIT")
 			return ((std::cout << "Goodbye !" << std::endl), 0);
 		else if (input == "ADD")
 			phonebook.ADD();
@@ -29,6 +36,6 @@ int main (void)
 			phonebook.SEARCH();
 		else
 			std::cout << "Invalid command. Please type ADD, SEARCH or EXIT." << std::endl;
-		input.clear();
+		// std::cin.ignore();
 	}
 }

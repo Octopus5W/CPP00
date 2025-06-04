@@ -6,7 +6,7 @@
 /*   By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:56:13 by hdelbecq          #+#    #+#             */
-/*   Updated: 2025/06/02 16:32:05 by hdelbecq         ###   ########.fr       */
+/*   Updated: 2025/06/04 18:35:28 by hdelbecq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,15 @@ void PhoneBook::set_contact(Contact &contact)
 	const std::string phonenumber = contact.get_PhoneNumber();
 	const std::string darksecret = contact.get_DarkSecret();
 	
-	if (this->_contact_iteration == 8)
-	{		
-		_contact_iteration = 0;
-		std::cout << "PhoneBook is full, you will overwrite the first contact." << std::endl;
-	}
+	if (this->_contact_iteration >= 8)
+		std::cout << "PhoneBook is full, you will overwrite contact: "<< (this->_contact_iteration % 8) + 1 << "." << std::endl;
 	this->_contact[this->_contact_iteration].set_FirstName(contact.get_FirstName());
 	this->_contact[this->_contact_iteration].set_LastName(contact.get_LastName());
 	this->_contact[this->_contact_iteration].set_NickName(contact.get_NickName());
 	this->_contact[this->_contact_iteration].set_PhoneNumber(contact.get_PhoneNumber());
 	this->_contact[this->_contact_iteration].set_DarkSecret(contact.get_DarkSecret());
-	this->_contact_iteration++;
+	if (++this->_contact_iteration == 16)
+		this->_contact_iteration = 8;
 	std::cout << "Contact added successfully!" << std::endl;
 }
 
@@ -64,70 +62,78 @@ int PhoneBook::check_i_contact()
 
 void PhoneBook::ADD()
 {
-	std::string input;
+	std::string input[5];
 	Contact contact;
 	
-	while (input.empty()) {
-		std::cout<< "Type Firstname: " << std::endl;
-		std::cin >> input;
-		if (input == "EXIT")
+	for (int i = 0; i < 5; i++)
+	{
+		switch (i)
 		{
-			std::cout << "Exit succes !" << std::endl;
-			return ;
+			case 0:
+				std::cout << "Type Firstname: " << std::endl;
+				break;
+			case 1:
+				std::cout << "Type Lastname: " << std::endl;
+				contact.set_LastName(input[i]);
+				break;
+			case 2:
+				std::cout << "Type Nickname: " << std::endl;
+				contact.set_NickName(input[i]);
+				break;
+			case 3:
+				std::cout << "Type Phone Number: " << std::endl;
+				contact.set_PhoneNumber(input[i]);
+				break;
+			case 4:
+				std::cout << "Type Dark Secret: " << std::endl;
+				contact.set_DarkSecret(input[i]);
+				break;			
+			default:
+				std::cout << "Dont touch my I" << std::endl;
+				exit(1);
+		}
+		std::getline(std::cin, input[i]);
+		while (input[i].empty())
+		{
+			std::getline(std::cin, input[i]);
+			if (std::cin.fail())
+			{
+				std::cin.clear();
+				std::cin.ignore();
+				std::cout << "Exit failure : cin error" << std::endl;
+				exit (1);
+			}
+			else if (input[i] == "EXIT")
+			{
+				std::cout << "Exit succes !" << std::endl;
+				return ;
+			}
+		}
+		switch (i)
+		{
+			case 0:
+				contact.set_FirstName(input[i]);
+				break;
+			case 1:
+				contact.set_LastName(input[i]);
+				break;
+			case 2:
+				contact.set_NickName(input[i]);
+				break;
+			case 3:
+				contact.set_PhoneNumber(input[i]);
+				break;
+			case 4:
+				contact.set_DarkSecret(input[i]);
+				break;			
+			default:
+				std::cout << "Dont touch my I" << std::endl;
+				exit(1);
 		}
 	}
-	contact.set_FirstName(input);
-	input.clear();
-	
-	while (input.empty()) {
-		std::cout<< "Type Lastname: " << std::endl;
-		std::cin >> input;
-		if (input == "EXIT")
-		{
-			std::cout << "Exit succes !" << std::endl;
-			return ;
-		}
-	}
-	contact.set_LastName(input);
-	input.clear();
-	
-	while (input.empty()) {
-		std::cout<< "Type Nickname: " << std::endl;
-		std::cin >> input;
-		if (input == "EXIT")
-		{
-			std::cout << "Exit succes !" << std::endl;
-			return ;
-		}
-	}
-	contact.set_NickName(input);
-	input.clear();
-	
-	while (input.empty()) {
-		std::cout<< "Type Phone Number: " << std::endl;
-		std::cin >> input;
-		if (input == "EXIT")
-		{
-			std::cout << "Exit succes !" << std::endl;
-			return ;
-		}
-	}
-	contact.set_PhoneNumber(input);
-	input.clear();
-	
-	while (input.empty()) {
-		std::cout<< "Type Dark Secret: " << std::endl;
-		std::cin >> input;
-		if (input == "EXIT")
-		{
-			std::cout << "Exit succes !" << std::endl;
-			return ;
-		}
-	}
-	contact.set_DarkSecret(input);
-	input.clear();
 	this->set_contact(contact);
 }
+
 
 std::string PhoneBook::format(std::string str)
 {
@@ -169,7 +175,19 @@ void PhoneBook::SEARCH()
 	std::cout << "Choose an index." << std::endl;
 	while (input.empty())
 	{
-		std::cin >> input;
+		std::getline(std::cin, input);
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin.ignore();
+			std::cout << "Exit failure : cin error" << std::endl;
+			exit (1);
+		}
+		else if (input == "EXIT")
+		{
+			std::cout << "Exit succes !" << std::endl;
+			break;
+		}
 		i = stoi(input) - 1;
 		if (input.length() == 1 && input.find_first_not_of("12345678") == input.npos && this->get_contact(i).get_FirstName().length() > 0)
 		{
@@ -180,16 +198,11 @@ void PhoneBook::SEARCH()
 			std::cout << "Dark Secret:  " << this->get_contact(i).get_DarkSecret() << std::endl;
 			break;
 		}
-		else if (input == "EXIT")
-		{
-			std::cout << "Exit succes !" << std::endl;
-			break;
-		}
 		else	
 		{
 			std::cout << "Your input is wrong!\nChoose an INDEX or Put EXIT." << std::endl;
 			input.clear();
-			std::cin.clear();
+			std::cin.ignore();
 			std::cin.ignore();
 		}
 	};

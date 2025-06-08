@@ -6,7 +6,7 @@
 /*   By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 21:18:32 by hdelbecq          #+#    #+#             */
-/*   Updated: 2025/06/04 18:19:22 by hdelbecq         ###   ########.fr       */
+/*   Updated: 2025/06/09 01:54:42 by hdelbecq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main (void)
 		{
 			std::cin.clear();
 			std::cin.ignore();
-			std::cout << "Exit failure : cin error" << std::endl;
+			std::cerr << "Exit failure : cin error" << std::endl;
 			exit (1);
 		}
 		else if (input == "EXIT")

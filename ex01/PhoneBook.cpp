@@ -6,7 +6,7 @@
 /*   By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:56:13 by hdelbecq          #+#    #+#             */
-/*   Updated: 2025/06/04 18:35:28 by hdelbecq         ###   ########.fr       */
+/*   Updated: 2025/06/09 01:55:17 by hdelbecq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void PhoneBook::ADD()
 				contact.set_DarkSecret(input[i]);
 				break;			
 			default:
-				std::cout << "Dont touch my I" << std::endl;
+				std::cerr << "Dont touch my I" << std::endl;
 				exit(1);
 		}
 		std::getline(std::cin, input[i]);
@@ -100,7 +100,7 @@ void PhoneBook::ADD()
 			{
 				std::cin.clear();
 				std::cin.ignore();
-				std::cout << "Exit failure : cin error" << std::endl;
+				std::cerr << "Exit failure : cin error" << std::endl;
 				exit (1);
 			}
 			else if (input[i] == "EXIT")
@@ -127,7 +127,7 @@ void PhoneBook::ADD()
 				contact.set_DarkSecret(input[i]);
 				break;			
 			default:
-				std::cout << "Dont touch my I" << std::endl;
+				std::cerr << "Dont touch my I" << std::endl;
 				exit(1);
 		}
 	}
@@ -180,7 +180,7 @@ void PhoneBook::SEARCH()
 		{
 			std::cin.clear();
 			std::cin.ignore();
-			std::cout << "Exit failure : cin error" << std::endl;
+			std::cerr << "Failure : cin error" << std::endl;
 			exit (1);
 		}
 		else if (input == "EXIT")
@@ -188,8 +188,8 @@ void PhoneBook::SEARCH()
 			std::cout << "Exit succes !" << std::endl;
 			break;
 		}
-		i = stoi(input) - 1;
-		if (input.length() == 1 && input.find_first_not_of("12345678") == input.npos && this->get_contact(i).get_FirstName().length() > 0)
+		i = (int)input[0];
+		if (input.find_first_not_of("12345678") == input.npos && i >= 0 && i < 8 && this->get_contact(i).get_FirstName().length() > 0)
 		{
 			std::cout << "Firstname:    " << this->get_contact(i).get_FirstName() << std::endl;	  
 			std::cout << "Lastname:     " << this->get_contact(i).get_LastName() << std::endl;	  
@@ -202,7 +202,6 @@ void PhoneBook::SEARCH()
 		{
 			std::cout << "Your input is wrong!\nChoose an INDEX or Put EXIT." << std::endl;
 			input.clear();
-			std::cin.ignore();
 			std::cin.ignore();
 		}
 	};

@@ -6,7 +6,7 @@
 /*   By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 21:18:32 by hdelbecq          #+#    #+#             */
-/*   Updated: 2025/06/09 01:54:42 by hdelbecq         ###   ########.fr       */
+/*   Updated: 2025/06/09 02:16:02 by hdelbecq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int main (void)
 			phonebook.SEARCH();
 		else
 			std::cout << "Invalid command. Please type ADD, SEARCH or EXIT." << std::endl;
-		// std::cin.ignore();
+		std::cin.clear();
+		std::cin.ignore();
+		
 	}
 }

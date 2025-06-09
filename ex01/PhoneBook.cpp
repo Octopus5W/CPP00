@@ -6,7 +6,7 @@
 /*   By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:56:13 by hdelbecq          #+#    #+#             */
-/*   Updated: 2025/06/09 01:55:17 by hdelbecq         ###   ########.fr       */
+/*   Updated: 2025/06/09 02:13:07 by hdelbecq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,29 +180,32 @@ void PhoneBook::SEARCH()
 		{
 			std::cin.clear();
 			std::cin.ignore();
-			std::cerr << "Failure : cin error" << std::endl;
+			std::cerr << "Exit failure : cin error" << std::endl;
 			exit (1);
 		}
-		else if (input == "EXIT")
+		else 
 		{
-			std::cout << "Exit succes !" << std::endl;
-			break;
-		}
-		i = (int)input[0];
-		if (input.find_first_not_of("12345678") == input.npos && i >= 0 && i < 8 && this->get_contact(i).get_FirstName().length() > 0)
-		{
-			std::cout << "Firstname:    " << this->get_contact(i).get_FirstName() << std::endl;	  
-			std::cout << "Lastname:     " << this->get_contact(i).get_LastName() << std::endl;	  
-			std::cout << "Nickname:     " << this->get_contact(i).get_NickName() << std::endl;	  
-			std::cout << "Phone Number: " << this->get_contact(i).get_PhoneNumber() << std::endl;	  
-			std::cout << "Dark Secret:  " << this->get_contact(i).get_DarkSecret() << std::endl;
-			break;
-		}
-		else	
-		{
-			std::cout << "Your input is wrong!\nChoose an INDEX or Put EXIT." << std::endl;
-			input.clear();
-			std::cin.ignore();
+			if (input == "EXIT")
+			{
+				std::cout << "Exit succes !" << std::endl;
+				break;
+			}
+			i = (int)input[0];
+			if (input.find_first_not_of("12345678") == input.npos && i >= 0 && i < 8 && this->get_contact(i).get_FirstName().length() > 0)
+			{
+				std::cout << "Firstname:    " << this->get_contact(i).get_FirstName() << std::endl;	  
+				std::cout << "Lastname:     " << this->get_contact(i).get_LastName() << std::endl;	  
+				std::cout << "Nickname:     " << this->get_contact(i).get_NickName() << std::endl;	  
+				std::cout << "Phone Number: " << this->get_contact(i).get_PhoneNumber() << std::endl;	  
+				std::cout << "Dark Secret:  " << this->get_contact(i).get_DarkSecret() << std::endl;
+				break;
+			}
+			else	
+			{
+				std::cout << "Your input is wrong!\nChoose an INDEX or Put EXIT." << std::endl;
+				input.clear();
+				std::cin.ignore();
+			}
 		}
 	};
 }

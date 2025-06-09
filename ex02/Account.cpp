@@ -6,7 +6,7 @@
 /*   By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 15:29:45 by hdelbecq          #+#    #+#             */
-/*   Updated: 2025/06/02 16:33:54 by hdelbecq         ###   ########.fr       */
+/*   Updated: 2025/06/09 02:00:28 by hdelbecq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,16 @@ Account::Account (int initial_deposit) {
 	std::cout << "created:" << std::endl;
 }
 
-Account::~Account() {}
+Account::~Account() 
+{
+	_displayTimestamp();
+	std::cout << "index:" << this->_accountIndex << ";";
+	std::cout << "amount:" << this->_amount << ";";
+	if (this->_accountIndex == this->_nbAccounts - 1)
+		std::cout << "closed:";
+	else
+		std::cout << "closed:" << std::endl;
+}
 
 
 int	Account::getTotalAmount()

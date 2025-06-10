@@ -6,7 +6,7 @@
 /*   By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:56:13 by hdelbecq          #+#    #+#             */
-/*   Updated: 2025/06/10 16:57:38 by hdelbecq         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:01:29 by hdelbecq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,7 +204,7 @@ void PhoneBook::SEARCH()
 				}
 			}
 			else	
-				std::cout << "Your input is wrong!\nChoose an INDEX or Put EXIT." << std::endl;
+				std::cout << "Your input is wrong!" << std::endl;
 		}
 	};
 }

@@ -6,7 +6,7 @@
 /*   By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:56:13 by hdelbecq          #+#    #+#             */
-/*   Updated: 2025/06/11 20:00:30 by hdelbecq         ###   ########.fr       */
+/*   Updated: 2025/06/11 21:15:10 by hdelbecq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,19 +74,15 @@ void PhoneBook::ADD()
 				break;
 			case 1:
 				std::cout << "Type Lastname: " << std::endl;
-				contact.set_LastName(input[i]);
 				break;
 			case 2:
 				std::cout << "Type Nickname: " << std::endl;
-				contact.set_NickName(input[i]);
 				break;
 			case 3:
 				std::cout << "Type Phone Number: " << std::endl;
-				contact.set_PhoneNumber(input[i]);
 				break;
 			case 4:
 				std::cout << "Type Dark Secret: " << std::endl;
-				contact.set_DarkSecret(input[i]);
 				break;			
 			default:
 				std::cerr << "Dont touch my I" << std::endl;

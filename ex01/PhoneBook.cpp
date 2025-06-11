@@ -6,7 +6,7 @@
 /*   By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:56:13 by hdelbecq          #+#    #+#             */
-/*   Updated: 2025/06/10 17:01:29 by hdelbecq         ###   ########.fr       */
+/*   Updated: 2025/06/11 20:00:30 by hdelbecq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void PhoneBook::set_contact(Contact &contact)
 	
 	if (this->_contact_iteration >= 8)
 		std::cout << "PhoneBook is full, you will overwrite contact: "<< (this->_contact_iteration % 8) + 1 << "." << std::endl;
-	this->_contact[this->_contact_iteration].set_FirstName(contact.get_FirstName());
-	this->_contact[this->_contact_iteration].set_LastName(contact.get_LastName());
-	this->_contact[this->_contact_iteration].set_NickName(contact.get_NickName());
-	this->_contact[this->_contact_iteration].set_PhoneNumber(contact.get_PhoneNumber());
-	this->_contact[this->_contact_iteration].set_DarkSecret(contact.get_DarkSecret());
+	this->_contact[this->_contact_iteration % 8].set_FirstName(contact.get_FirstName());
+	this->_contact[this->_contact_iteration % 8].set_LastName(contact.get_LastName());
+	this->_contact[this->_contact_iteration % 8].set_NickName(contact.get_NickName());
+	this->_contact[this->_contact_iteration % 8].set_PhoneNumber(contact.get_PhoneNumber());
+	this->_contact[this->_contact_iteration % 8].set_DarkSecret(contact.get_DarkSecret());
 	if (++this->_contact_iteration == 16)
 		this->_contact_iteration = 8;
 	std::cout << "Contact added successfully!" << std::endl;

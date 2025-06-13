@@ -6,7 +6,7 @@
 /*   By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:56:13 by hdelbecq          #+#    #+#             */
-/*   Updated: 2025/06/11 21:15:10 by hdelbecq         ###   ########.fr       */
+/*   Updated: 2025/06/13 16:47:12 by hdelbecq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,6 +198,8 @@ void PhoneBook::SEARCH()
 					std::cout << "Phone Number: " << this->get_contact(i).get_PhoneNumber() << std::endl;	  
 					std::cout << "Dark Secret:  " << this->get_contact(i).get_DarkSecret() << std::endl << std::endl;
 				}
+				else
+				     std::cout << "Index out of range! Please choose a number between 1 and " << this->check_i_contact() << "." << std::endl;
 			}
 			else	
 				std::cout << "Your input is wrong!" << std::endl;
